@@ -6,16 +6,21 @@ var easycam;
 
 var pos = true;
 
-setTimeout(function(){
-	       pos = false;
-	   },60000);
+function posY () {
+    pos = true;
+    setTimeout(posX,32000);
+}
+
+function posX() {
+    pos = false;
+    setTimeout(posY,32000);
+}
+
+setTimeout(posX,32000);
 
 function setup(){
     createCanvas(windowWidth,  windowHeight, WEBGL);
-  
-    console.log(Dw);
-    console.log(Dw.EasyCam.INFO);
-    
+
     easycam = createEasyCam();
 
     txt3 = loadImage("assets/bg.jpg");
@@ -45,6 +50,46 @@ function draw(){
     directionalLight(200, 0, 0, 0.25, 0.25, 0.25);
     pointLight(0, 0, 200, locX, locY, 0);
     pointLight(200, 200, 0, -locX, -locY, 0);
+
+    push();
+    translate(0, 0, 600);
+    texture(txt3);
+    plane(1200);
+    pop();
+
+    push();
+    translate(0, 0, -600);
+    texture(txt3);
+    plane(1200);
+    pop();
+
+    push();
+    translate(600, 0, 0);
+    rotateY(PI/2);
+    texture(txt3);
+    plane(1200);
+    pop();
+    
+    push();
+    translate(-600, 0, 0);
+    rotateY(PI/2);
+    texture(txt3);
+    plane(1200);
+    pop();
+
+    push();
+    translate(0, 600, 0);
+    rotateX(PI/2);
+    texture(txt3);
+    plane(1200);
+    pop();
+    
+    push();
+    translate(0, -600, 0);
+    rotateX(PI/2);
+    texture(txt3);
+    plane(1200);
+    pop();
 
     push();
     translate(-250, 0, 0);
