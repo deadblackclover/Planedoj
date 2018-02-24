@@ -6,17 +6,23 @@ var easycam;
 
 var pos = true;
 
+var cube = 0;
+var dis = 500;
+
 function posY () {
     pos = true;
     setTimeout(posX,32000);
+    cube++;
 }
 
 function posX() {
     pos = false;
     setTimeout(posY,32000);
+    cube++;
 }
 
 setTimeout(posX,32000);
+
 
 function setup(){
     createCanvas(windowWidth,  windowHeight, WEBGL);
@@ -42,14 +48,26 @@ function draw(){
 	easycam.rotateX(0.005);
     }
     
+    if(cube == 5){
+	dis++;
+	easycam.setDistance(dis,0);   
+    }else if(cube ==7){
+	if(dis > 500) {
+	    dis--;
+	    easycam.setDistance(dis,0);   
+	}
+    }
     
-    var locY = (mouseY / height - 0.5) * (-2);
-    var locX = (mouseX / width - 0.5) * 2;
+    var locY = 600;
+    var locX = 600;
+    var locZ = 600;
     
     ambientLight(50);
     directionalLight(200, 0, 0, 0.25, 0.25, 0.25);
+    directionalLight(200, 0, 0, -0.25, -0.25, -0.25);
+    directionalLight(200, 0, 0, -0.25, -0.25, 0.25);
     pointLight(0, 0, 200, locX, locY, 0);
-    pointLight(200, 200, 0, -locX, -locY, 0);
+    pointLight(200, 200, 0, -locX, locY, 0);
 
     push();
     translate(0, 0, 600);
