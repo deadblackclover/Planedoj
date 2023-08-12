@@ -40,27 +40,27 @@ function windowResized() {
 
 function draw() {
     background(0);
-    
+
     if(pos) {
-	easycam.rotateY(0.005);	
+        easycam.rotateY(0.005);
     } else {
-	easycam.rotateX(0.005);
+        easycam.rotateX(0.005);
     }
-    
+
     if(cube == 5) {
-	dis++;
-	easycam.setDistance(dis, 0);   
+        dis++;
+        easycam.setDistance(dis, 0);
     } else if(cube ==7) {
-	if(dis > 500) {
-	    dis--;
-	    easycam.setDistance(dis, 0);   
-	}
+        if(dis > 500) {
+            dis--;
+            easycam.setDistance(dis, 0);
+        }
     }
-    
+
     var locY = 600;
     var locX = 600;
     var locZ = 600;
-    
+
     ambientLight(50);
     directionalLight(200, 0, 0, 0.25, 0.25, 0.25);
     directionalLight(200, 0, 0, -0.25, -0.25, -0.25);
@@ -86,7 +86,7 @@ function draw() {
     texture(txt3);
     plane(1200);
     pop();
-    
+
     push();
     translate(-600, 0, 0);
     rotateY(PI/2);
@@ -100,7 +100,7 @@ function draw() {
     texture(txt3);
     plane(1200);
     pop();
-    
+
     push();
     translate(0, -600, 0);
     rotateX(PI/2);
@@ -115,7 +115,7 @@ function draw() {
     texture(txt1);
     sphere(90, 64);
     pop();
-    
+
     translate(250, 0, 0);
     rotateY(frameCount * 0.05);
     ambientMaterial(250);
