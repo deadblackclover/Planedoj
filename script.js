@@ -9,23 +9,22 @@ var pos = true;
 var cube = 0;
 var dis = 500;
 
-function posY () {
+function posY() {
     pos = true;
-    setTimeout(posX,32000);
+    setTimeout(posX, 32000);
     cube++;
 }
 
 function posX() {
     pos = false;
-    setTimeout(posY,32000);
+    setTimeout(posY, 32000);
     cube++;
 }
 
-setTimeout(posX,32000);
+setTimeout(posX, 32000);
 
-
-function setup(){
-    createCanvas(windowWidth,  windowHeight, WEBGL);
+function setup() {
+    createCanvas(windowWidth, windowHeight, WEBGL);
 
     easycam = createEasyCam();
 
@@ -36,25 +35,25 @@ function setup(){
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
-    easycam.setViewport([0,0,windowWidth, windowHeight]);
+    easycam.setViewport([ 0, 0, windowWidth, windowHeight ]);
 }
 
-function draw(){
+function draw() {
     background(0);
     
-    if(pos){
+    if(pos) {
 	easycam.rotateY(0.005);	
     } else {
 	easycam.rotateX(0.005);
     }
     
-    if(cube == 5){
+    if(cube == 5) {
 	dis++;
-	easycam.setDistance(dis,0);   
-    }else if(cube ==7){
+	easycam.setDistance(dis, 0);   
+    } else if(cube ==7) {
 	if(dis > 500) {
 	    dis--;
-	    easycam.setDistance(dis,0);   
+	    easycam.setDistance(dis, 0);   
 	}
     }
     
